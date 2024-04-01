@@ -29,4 +29,4 @@ push:
     entrypoint: [""]
   script: 
     -  "echo ${HARBOR_PASSWORD} helm registry login oci://${HARBOR_HOST} --username ${HARBOR_USERNAME} --password-stdin"
-    - "for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}; done"
+    - "for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}/helm-charts; done"
