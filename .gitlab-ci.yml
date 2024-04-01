@@ -1,0 +1,40 @@
+stages:
+  - login
+  - package
+  - push
+
+login:
+  stage: login
+  image:
+    name: alpine/helm 
+    entrypoint: [""]
+  script: 
+    - helm registry login ${HARBOR_OCI} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
+  rules:
+    - if: $CI_COMMIT_TAG
+  
+package:
+  stage: package
+  image:
+    name: alpine/helm 
+    entrypoint: [""]
+  script: 
+    - for chart in $(ls); do helm package ${chart}; done
+  artifacts:
+    paths:
+      - *.tgz
+  rules:
+    - if: $CI_COMMIT_TAG
+  
+push:
+  stage: push
+  image:
+    name: alpine/helm 
+    entrypoint: [""]
+  script: 
+    - helm registry login ${HARBOR_OCI} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
+    - for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}; done
+  rules:
+    - if: $CI_COMMIT_TAG
+  
+
