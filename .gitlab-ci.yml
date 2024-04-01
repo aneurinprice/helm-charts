@@ -9,7 +9,7 @@ login:
     name: alpine/helm 
     entrypoint: [""]
   script: 
-    - helm registry login oci://${HARBOR_HOST} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
+    -  "echo ${HARBOR_PASSWORD} helm registry login oci://${HARBOR_HOST} --username ${HARBOR_USERNAME} --password-stdin"
   
 package:
   stage: package
@@ -17,7 +17,7 @@ package:
     name: alpine/helm 
     entrypoint: [""]
   script: 
-    - for chart in $(ls); do helm package ${chart}; done
+    - "for chart in $(ls); do helm package ${chart}; done"
   artifacts:
     paths:
       - "*.tgz"
@@ -28,5 +28,5 @@ push:
     name: alpine/helm 
     entrypoint: [""]
   script: 
-    - helm registry login ${HARBOR_OCI}${HARBOR_URL} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
-    - for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}; done
+    - "helm registry login ${HARBOR_OCI}${HARBOR_URL} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}"
+    - "for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}; done"
