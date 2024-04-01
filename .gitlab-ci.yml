@@ -17,7 +17,7 @@ package:
     name: alpine/helm 
     entrypoint: [""]
   script: 
-    - "for chart in $(ls); do helm package ${chart}; done"
+    - "for chart in $(ls charts/); do helm package charts/${chart}; done"
   artifacts:
     paths:
       - "*.tgz"
