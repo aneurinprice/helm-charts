@@ -9,7 +9,7 @@ login:
     name: alpine/helm 
     entrypoint: [""]
   script: 
-    - helm registry login ${HARBOR_OCI}${HARBOR_URL} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
+    - helm registry login oci://${HARBOR_HOST} --username ${HARBOR_USERNAME} --password ${HARBOR_PASSWORD}
   
 package:
   stage: package
