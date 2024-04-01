@@ -22,7 +22,7 @@ package:
     - for chart in $(ls); do helm package ${chart}; done
   artifacts:
     paths:
-      - *.tgz
+      - "*.tgz"
   rules:
     - if: $CI_COMMIT_TAG
   
