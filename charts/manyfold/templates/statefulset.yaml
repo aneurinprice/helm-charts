@@ -31,19 +31,6 @@ spec:
             - 'echo waiting for Redis;'
             - 'sleep'
             - '30'
-        - name: "concat-database-uri"
-          image: alpine:latest
-          env:
-            - name: DB_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Release.Name }}-postgresql
-                  key: postgres-password
-          command:
-            - "/bin/sh"
-          args:
-            - -c
-            - export DATABASE_URL="postgresql://{{ .Values.postgresql.auth.username }}:${DB_PASS}@{{ .Release.Name }}-postgresql/{{ .Values.postgresql.auth.database }}?pool=5"
       containers:
         - name: manyfold
           image: "{{ .Values.manyfold.image.repository }}:{{ .Values.manyfold.image.tag }}"
@@ -59,7 +46,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Release.Name }}-postgresql
-                  key: postgres-password
+                  key: password
             - name: DATABASE_NAME
               value: {{ .Values.postgresql.auth.database }}
             - name: SECRET_KEY_BASE
