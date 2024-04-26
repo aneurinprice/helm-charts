@@ -51,6 +51,17 @@ spec:
             - name: http
               containerPort: 3214
           env:
+            - name: DATABASE_HOST
+              value: "{{ .Release.Name }}-postgresql"
+            - name: DATABASE_USER
+              value: {{ .Values.postgresql.auth.username }}
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-postgresql
+                  key: postgres-password
+            - name: DATABASE_NAME
+              value: {{ .Values.postgresql.auth.database }}
             - name: SECRET_KEY_BASE
               value: {{ .Values.manyfold.secret_key_base }}
             - name: REDIS_URL
