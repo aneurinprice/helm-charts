@@ -30,3 +30,6 @@ push:
   script: 
     - "echo ${HARBOR_PASSWORD} | helm registry login ${HARBOR_HOST} --username ${HARBOR_USERNAME} --password-stdin"
     - "for chart in $(find . -type f -name *.tgz); do helm push ${chart} ${HARBOR_OCI}/helm-charts; done"
+  artifacts:
+    paths:
+      - "*.tgz"
