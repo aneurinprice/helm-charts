@@ -3,7 +3,7 @@ manyfold:
   image:
     repository: ghcr.io/manyfold3d/manyfold
     pullPolicy: IfNotPresent
-    tag: "0.66.0"
+    tag: "0.67.0"
   imagePullSecrets: []
   nameOverride: ""
   serviceAccount:
