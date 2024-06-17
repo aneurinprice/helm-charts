@@ -34,6 +34,8 @@ spec:
       containers:
         - name: manyfold
           image: "{{ .Values.manyfold.image.repository }}:{{ .Values.manyfold.image.tag }}"
+        resources:
+{{ toYaml .Values.manyfold.resources | indent 10 }}
           ports:
             - name: http
               containerPort: 3214
