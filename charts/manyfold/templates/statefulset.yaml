@@ -45,7 +45,7 @@ spec:
             - name: MAX_FILE_EXTRACT_SIZE
               value: {{ .Values.manyfold.env.MAX_FILE_EXTRACT_SIZE | int }}
             - name: DATABASE_CONNECTION_POOL
-              value: {{ .Values.manyfold.env.DATABASE_CONNECTION_POOL }}
+              value: {{ .Values.manyfold.env.DATABASE_CONNECTION_POOL | int }}
             - name: DATABASE_HOST
               value: "{{ .Release.Name }}-postgresql"
             - name: DATABASE_USER
