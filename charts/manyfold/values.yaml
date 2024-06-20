@@ -1,6 +1,8 @@
 manyfold:
   env:
     # Commented out elements should probably stay that way if you don't know what you are doing.
+    PUID: 1000
+    PGID: 1000
     MAX_FILE_UPLOAD_SIZE: 5368709120
     MAX_FILE_EXTRACT_SIZE: 5368709120
     # DATABASE_HOST:
