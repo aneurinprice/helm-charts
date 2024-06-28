@@ -2,10 +2,10 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ .Values.manyfold.serviceAccount.name }}
+  name: {{ include "manyfold.serviceAccountName" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ .Values.manyfold.serviceAccount.name }}
+    name: {{ include "manyfold.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
