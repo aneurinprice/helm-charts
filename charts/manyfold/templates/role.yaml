@@ -1,0 +1,16 @@
+{{- if .Values.manyfold.serviceAccount.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    {{- include "manyfold.labels" . | nindent 4 }}
+  name: "{{ .Release.Name }}-migrations"
+  namespace: {{ .Release.Namespace }}
+rules:
+- apiGroups:
+    - ""
+  resources:
+    - StatefulSet
+  verbs:
+    - delete
+{{ end }}

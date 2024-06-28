@@ -21,6 +21,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
+      serviceAccountName: {{ .Values.manyfold.serviceAccount.name }}
       terminationGracePeriodSeconds: 10
       initContainers:
         - name: "wait-for-dependencies"
