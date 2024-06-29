@@ -8,9 +8,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups:
-    - "apps/v1"
+    - "apps"
   resources:
-    - StatefulSet
+    - statefulsets
   verbs:
     - delete
 {{ end }}
