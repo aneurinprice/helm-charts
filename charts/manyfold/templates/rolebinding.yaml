@@ -5,7 +5,7 @@ metadata:
   name: {{ include "manyfold.serviceAccountName" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "manyfold.serviceAccountName" . }}
+    name: "{{ .Values.manyfold.serviceAccount.name }}" 
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role

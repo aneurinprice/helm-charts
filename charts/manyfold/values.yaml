@@ -22,7 +22,7 @@ manyfold:
     create: true
     automount: true
     annotations: {}
-    name: ""
+    name: "manyfold"
   podAnnotations: {}
   podLabels: {}
   podSecurityContext: {}
