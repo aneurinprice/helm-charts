@@ -4,9 +4,9 @@ description: A Helm chart for Manyfold
 
 type: application
 
-version: 0.7.1
+version: 0.8.0
 
-appVersion: "v0.72.0"
+appVersion: "v0.74.0"
 
 dependencies:
   - name: redis
