@@ -47,6 +47,7 @@ spec:
               value: "{{ .Values.manyfold.env.PGID | int }}"
             - name: MAX_FILE_UPLOAD_SIZE
               value: "{{ .Values.manyfold.env.MAX_FILE_UPLOAD_SIZE | int }}"
+            {{ if .Values.postgresql.enabled }}
             - name: MAX_FILE_EXTRACT_SIZE
               value: "{{ .Values.manyfold.env.MAX_FILE_EXTRACT_SIZE | int }}"
             - name: DATABASE_CONNECTION_POOL
@@ -62,6 +63,7 @@ spec:
                   key: password
             - name: DATABASE_NAME
               value: {{ .Values.postgresql.auth.database }}
+            {{- end }}
             - name: SECRET_KEY_BASE
               value: {{ .Values.manyfold.secret_key_base }}
             - name: REDIS_URL
