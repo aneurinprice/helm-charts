@@ -47,6 +47,9 @@ spec:
               value: "{{ .Values.manyfold.env.PGID | int }}"
             - name: MAX_FILE_UPLOAD_SIZE
               value: "{{ .Values.manyfold.env.MAX_FILE_UPLOAD_SIZE | int }}"
+            {{ if .Values.manyfold.env.DATABASE_URL }}
+            - name: DATABASE_URL
+              value: "{{ .Values.manyfold.env.DATABASE_URL }}"
             {{ if .Values.postgresql.enabled }}
             - name: MAX_FILE_EXTRACT_SIZE
               value: "{{ .Values.manyfold.env.MAX_FILE_EXTRACT_SIZE | int }}"
