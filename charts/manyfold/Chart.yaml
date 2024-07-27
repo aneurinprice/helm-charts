@@ -4,7 +4,7 @@ description: A Helm chart for Manyfold
 
 type: application
 
-version: 0.8.4
+version: 0.8.5
 
 appVersion: "v0.74.2"
 
