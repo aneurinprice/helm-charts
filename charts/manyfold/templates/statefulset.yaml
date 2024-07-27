@@ -50,6 +50,7 @@ spec:
             {{ if .Values.manyfold.env.DATABASE_URL }}
             - name: DATABASE_URL
               value: "{{ .Values.manyfold.env.DATABASE_URL }}"
+            {{- end }}
             {{ if .Values.postgresql.enabled }}
             - name: MAX_FILE_EXTRACT_SIZE
               value: "{{ .Values.manyfold.env.MAX_FILE_EXTRACT_SIZE | int }}"
